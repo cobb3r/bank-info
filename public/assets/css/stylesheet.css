@@ -1,0 +1,133 @@
+* {
+    scroll-behavior: smooth;
+}
+
+html, body {
+    max-width: 100%;
+    overflow-x: clip;
+    scrollbar-width: none;
+}
+
+nav {
+    background-color: rgb(122, 178, 211);
+    min-height: 5vh;
+    width: 100%;
+}
+
+.dropdown::after {
+    background-color: rgb(122, 178, 211)
+}
+
+.dropdown.show::after {
+    background-color: rgb(122, 178, 211)
+}
+
+ul {
+    list-style: none;
+}
+
+nav li {
+    letter-spacing: 0.1em;
+    position: relative;
+}
+
+nav .dropdown-item:hover {
+    background-color: rgb(91, 145, 176);
+}
+
+nav li::after{
+    content: '';
+    height: 0.2em;
+    width: 0;
+    position: absolute;
+    background-color: white;
+    transition: all 0.5s ease;
+}
+
+li:hover::after {
+    width: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+li:hover {
+    transform: scale(1.1);
+}
+
+li:hover > a {
+    color: rgb(47, 42, 42);
+}
+
+main {
+    background-color: aliceblue;
+    min-height: 100vh;
+    scrollbar-width: none;
+    overflow: scroll;
+}
+
+#mainContainer > #mainCol {
+    height: 100vh;
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+
+#mainContainer > #mainCol > div {
+    scroll-snap-align: start;
+    height: 100vh;
+    padding-top: 9vh;
+    scroll-snap-stop: always;
+}
+
+form {
+    height: fit-content;
+    background-color: rgb(122, 178, 211);
+    border-radius: 0.2em;
+}
+
+form input, form select {
+    width: 100%;
+    height: 4vh;
+    padding: 0px 10px 0 10px;
+    border-radius: 0.4em;
+}
+
+form label {
+    font-size: 1.5em;
+}
+
+button {
+    border-radius: 0.5em;
+    width: fit-content;
+    height: fit-content;
+    background-color: cornflowerblue;
+    font-size: 1.5em;
+    transition: all 0.5s ease;
+}
+
+button:hover {
+    transform: scale(1.1);
+    background-color: rgb(122, 178, 211);
+}
+
+#checks {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: .5s ease;
+    margin: 0px;
+    color: red;
+}
+
+#pass:focus ~ #checks {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+footer {
+    scroll-snap-align: start;
+    height: 95%;
+    background-color: rgb(122, 178, 211);
+}
