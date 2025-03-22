@@ -2,7 +2,7 @@
             <div class="col-10 col-md-8 col-lg-6 p-3 text-center">
                 <h1>Sign Up</h1>
                 <hr>
-                <form id="form" class="text-center p-1" action="/project-root/public/signup" method="post">
+                <form id="form" class="text-center p-1" action="/signup" method="post">
                     <div class="row">
                         <div class="col-12 col-md-6 d-flex align-items-center justify-content-center flex-column" style="height: fit-content;">
                             <h3>Personal Information</h3>
@@ -10,7 +10,7 @@
                             <input class="text-center" type="email" id="eaddress" name="eaddress" placeholder="example@example.com" required>
                             <br>
                             <label for="pass">Password</label>
-                            <input class="text-center" type="password" id="pass" name="pass" placeholder="Password" required>
+                            <input class="text-center" type="password" id="pass" name="pass" placeholder="Password" oninput="validate()" required>
                             <div class="text-center" id="checks">
                                 <p class="my-0" id="length">Password must be More than 8 Digits</p>
                                 <p class="my-0" id="number">Password Must Contain a Number</p>
@@ -54,3 +54,4 @@
                 </form>
             </div>
         </main>
+        <script src="/assets/js/validation.js"></script>

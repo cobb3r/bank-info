@@ -5,23 +5,23 @@
             <div class="col-12 col-sm-6 col-md-5 text-center">
                 <ul class="p-0">
                     <li>
-                        <a href="/index.html">Home</a>
+                        <a href="/">Home</a>
                     </li>
                     </br>
                     <li>
-                        <a href="/signin.html">Sign In</a>
+                        <a href="/signin">Sign In</a>
                     </li>
                     </br>
                     <li>
-                        <a href="/signup.html">Sign Up</a>
+                        <a href="/signup">Sign Up</a>
                     </li>
                     </br>
                     <li>
-                        <a href="/edit.html">Edit Account</a>
+                        <a href="/edit">Edit Account</a>
                     </li>
                     </br>
                     <li>
-                        <a href="/delete.html">Delete Account</a>
+                        <a href="/delete">Delete Account</a>
                     </li>
                 </ul>
             </div>
@@ -37,5 +37,5 @@
                 <p><a href="mailto:tylerannis55@gmail.com">Email</a></p>
             </div>
         </footer>
-</body>
+    </body>
 </html>

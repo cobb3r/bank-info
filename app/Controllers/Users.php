@@ -31,7 +31,6 @@ class Users extends BaseController
                     'min_length' => 'Email Must Be 3 Digits or Longer',
                     'max_length' => 'Email Must Be 30 Digits or Less',
                     'valid_email' => 'Invalid Email Address',
-                    'is_unique' => 'You Already Have An Account, Please Log In Instead',
                     'existingAcc' => 'You Do Not Have an Account Yet, Please Sign Up'
                 ],
                 'pass' => [
@@ -69,7 +68,7 @@ class Users extends BaseController
                         $email->setMessage('Testing the email class.');
 
                         $email->send();
-                        return redirect()->to('/project-root/public/index');
+                        return redirect()->to('/');
                     }
                 }
             }
@@ -86,7 +85,7 @@ class Users extends BaseController
           
         if ($this->request->getMethod() == 'POST') {
             $rules = [
-                'eaddress' => 'required|min_length[3]|max_length[30]|valid_email|is_unique[users.eaddress]|existingAcc[eaddress]',
+                'eaddress' => 'required|min_length[3]|max_length[30]|valid_email|is_unique[users.eaddress]',
                 'pass' => 'required|min_length[3]|max_length[20]|validateUser[eaddress, pass]',
                 'accountName' => 'required|min_length[3]|max_length[30]',
                 'accountNumber' => 'required|min_length[8]|max_length[8]',
@@ -100,7 +99,6 @@ class Users extends BaseController
                     'max_length' => 'Email Must Be 30 Digits or Less',
                     'valid_email' => 'Invalid Email Address',
                     'is_unique' => 'You Already Have An Account, Please Log In Instead',
-                    'existingAcc' => 'You Do Not Have an Account Yet, Please Sign Up'
                 ],
                 'pass' => [
                     'min_length' => 'Password Must Be 3 Digits or Longer',
@@ -131,7 +129,8 @@ class Users extends BaseController
                 ];
 
                 $model->insert($data);
-                return redirect()->to('/project-root/public/index');
+
+                return redirect()->to('/');
             }
         }
 
@@ -159,7 +158,6 @@ class Users extends BaseController
                     'min_length' => 'Email Must Be 3 Digits or Longer',
                     'max_length' => 'Email Must Be 30 Digits or Less',
                     'valid_email' => 'Invalid Email Address',
-                    'is_unique' => 'You Already Have An Account, Please Log In Instead',
                     'existingAcc' => 'You Do Not Have an Account Yet, Please Sign Up'
                 ],
                 'pass' => [
@@ -198,7 +196,7 @@ class Users extends BaseController
                         echo("Incorrect Password");
                     } else {
                         $model->update('33', $data); //Issue with the Primary Key
-                        return redirect()->to('/project-root/public/index');
+                        return redirect()->to('/');
                     }
                 }
             }
@@ -222,7 +220,6 @@ class Users extends BaseController
                     'min_length' => 'Email Must Be 3 Digits or Longer',
                     'max_length' => 'Email Must Be 30 Digits or Less',
                     'valid_email' => 'Invalid Email Address',
-                    'is_unique' => 'You Already Have An Account, Please Log In Instead',
                     'existingAcc' => 'You Do Not Have an Account Yet, Please Sign Up'
                 ],
                 'pass' => [
@@ -254,7 +251,7 @@ class Users extends BaseController
                     } else {
                         $model->where('eaddress', $data['eaddress'])->delete();
                         echo("Deleted");
-                        return redirect()->to('/project-root/public/index');
+                        return redirect()->to('/');
                     }
                 }
             }
