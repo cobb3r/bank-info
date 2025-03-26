@@ -47,30 +47,19 @@ class Users extends BaseController
                 echo view('template/footer'); //Footer Wont Reload On Form Submission, Include With Main
             } else {
                 $model = new user();
+                $user = $model->where('eaddress', $_POST['eaddress'])->first();
 
                 $data = [
+                    'id' => $user['id'],
+                    'name' => $user['accountName'],
                     'eaddress' => $_POST['eaddress'],
                     'pass' => $_POST['pass'],
+                    'signedIn' => true
                 ];
 
-                $user = $model->where('eaddress', $data['eaddress'])->first();
-                if (!$user) {
-                    echo("User Does Not Exist");
-                } else {
-                    if (! password_verify($data['pass'], $user['pass'])) {
-                        echo("Incorrect Password");
-                    } else {
-                        echo("Signed In");
-                        $email = service('email');
-                        $email->setTo('tylerannis55@gmail.com');
-                        
-                        $email->setSubject('Email Test');
-                        $email->setMessage('Testing the email class.');
+                session()->set($data);
 
-                        $email->send();
-                        return redirect()->to('/');
-                    }
-                }
+                return redirect()->to('/');
             }
         }
         
@@ -86,7 +75,7 @@ class Users extends BaseController
         if ($this->request->getMethod() == 'POST') {
             $rules = [
                 'eaddress' => 'required|min_length[3]|max_length[30]|valid_email|is_unique[users.eaddress]',
-                'pass' => 'required|min_length[3]|max_length[20]|validateUser[eaddress, pass]',
+                'pass' => 'required|min_length[3]|max_length[20]|',
                 'accountName' => 'required|min_length[3]|max_length[30]',
                 'accountNumber' => 'required|min_length[8]|max_length[8]',
                 'sortCode' => 'required|min_length[6]|max_length[6]',
@@ -103,7 +92,6 @@ class Users extends BaseController
                 'pass' => [
                     'min_length' => 'Password Must Be 3 Digits or Longer',
                     'max_length' => 'Password Must Be 20 Digits or Less',
-                    'validateUser' => 'Password Does not Match'
                 ],
                 'accountName' => [
                     'min_length' => 'Account Name Must Be 3 Digits or Longer',
@@ -262,5 +250,11 @@ class Users extends BaseController
         echo view('template/header');
         echo view('delete');
         echo view('template/footer');
+    }
+
+    public function signout() 
+    {
+        session()->destroy();
+        return redirect()->to('/');
     }
 }

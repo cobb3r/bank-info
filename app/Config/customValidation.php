@@ -8,11 +8,6 @@ class customValidation {
 
         $user = $model->where('eaddress', $data['eaddress'])->first();
 
-        echo "String " . $str . " ";
-        echo "Fields " . $fields . " ";
-        echo "Data ";
-        print_r($data);
-
         if (!$user) {
             return false;
         } else {
@@ -24,11 +19,6 @@ class customValidation {
         $model = new user();
 
         $user = $model->where('eaddress', $data['eaddress'])->first();
-
-        echo "String " . $str . " ";
-        echo "Fields " . $fields . " ";
-        echo "Data ";
-        print_r($data);
 
         if ($user) {
             return password_verify($data['pass'], $user['pass']);

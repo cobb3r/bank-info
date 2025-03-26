@@ -1,6 +1,6 @@
 <footer class="row d-flex justify-content-center align-items-center">
             <div class="col-7 col-md-2" style="overflow: hidden;">
-                <img class="ms-2" src="../public/assets/img/logo.png" alt="" style="width: 100%; height:30%; border-radius:1em">
+                <img class="ms-2" src="/assets/img/logo.png" alt="" style="width: 100%; height:30%; border-radius:1em">
             </div>
             <div class="col-12 col-sm-6 col-md-5 text-center">
                 <ul class="p-0">
